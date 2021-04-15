@@ -22,13 +22,13 @@ def showRandomMapsAndTrajectories(num_of_maps, num_of_trajectories_for_map):
             
             ax = fig.add_subplot(size, size, counter)
             
-            plt.imshow(np.abs(np.array(data[col].map.map, dtype='float32') - 1), cmap='gray')
+            plt.imshow(np.abs(np.array(data[col].map, dtype='float32') - 1), cmap='gray')
             traj_size = 0
             if num_of_trajectories_for_map >= len(data[col].trajectories):
                 traj_size = len(data[col].trajectories) - 1
             else:
                 traj_size = num_of_trajectories_for_map
-            for i in np.random.randint(len(data[col].trajectories), size=(traj_size)):
+            for i in range(0, traj_size):
                 trajs = data[col].trajectories[i]
                 plt.plot(trajs.x, trajs.y)
             
@@ -37,4 +37,4 @@ def showRandomMapsAndTrajectories(num_of_maps, num_of_trajectories_for_map):
             counter += 1
     plt.show()
 
-showRandomMapsAndTrajectories(5, 200)
+showRandomMapsAndTrajectories(9, 200)
